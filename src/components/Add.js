@@ -1,6 +1,6 @@
 import {TextField, Typography, Button} from '@mui/material'
 import { useState } from 'react';
-import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
+import {useNavigate} from 'react-router-dom'
 
 
 function Add () {
@@ -11,6 +11,7 @@ function Add () {
     const [lugar, setlugar] = useState('')
     const [precio, setprecio] = useState('')
     const [descripcion, setdescripcion] = useState('')
+
     
     const handlenombrechange = (e) => {
        
@@ -44,8 +45,12 @@ function Add () {
         let uudi = generateUUID();
 
         localStorage.setItem('eventos', JSON.stringify([...eventos, {nombre, fecha, cupos, lugar, precio, descripcion, uudi}]));
+
+        navigate('/home/0')
+
         
     }
+    const navigate = useNavigate();
 
     return(
         <>
